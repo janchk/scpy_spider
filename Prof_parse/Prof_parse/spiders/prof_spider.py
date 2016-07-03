@@ -1,4 +1,4 @@
-import scrapy, items
+import Prof_parse.items as items
 from scrapy.contrib.loader.processor import TakeFirst, MapCompose
 from scrapy.loader import ItemLoader
 from scrapy import selector
@@ -24,7 +24,7 @@ class ProfSpider(CrawlSpider):
     def parse_prep_info(self, response):
         xhs = selector.HtmlXPathSelector(response)
 
-        l = ProfLoader(items.ProfItem, xhs)
+        l = ProfLoader(items.ProfParseItem, xhs)
         l.add_xpath()
 
         return l.load_item()
