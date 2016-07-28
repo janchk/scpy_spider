@@ -18,19 +18,9 @@ class ProfSpider(CrawlSpider):
     start_urls = ['http://www.apmath.spbu.ru/ru/staff/']
     rules = (
         Rule(scrapy.linkextractor.LinkExtractor(restrict_xpaths='//tbody/tr'), follow=True),
-        Rule(scrapy.linkextractor.LinkExtractor(allow='index.html'), callback='parse_prep_info')
+        #Rule(scrapy.linkextractor.LinkExtractor(allow='index.html'), callback='parse_prep_info')
     )
 
-    def parse_prep_info(self, response):
-        xhs = selector.HtmlXPathSelector(response)
+    def parse_prep_info(self, response):(
 
-        l = ProfLoader(items.ProfParseItem, xhs)
-        l.add_xpath()
-
-        return l.load_item()
-
-
-
-
-
-
+    )
