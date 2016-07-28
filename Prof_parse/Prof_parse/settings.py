@@ -13,6 +13,7 @@ BOT_NAME = 'Prof_parse'
 
 SPIDER_MODULES = ['Prof_parse.spiders']
 NEWSPIDER_MODULE = 'Prof_parse.spiders'
+DOWNLOAD_HANDLERS = {'s3': None, }
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent

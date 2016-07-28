@@ -7,9 +7,9 @@ import scrapy.linkextractor
 from scrapy.linkextractor import *
 
 
-class ProfLoader(ItemLoader):
-    default_input_processor = MapCompose(lambda s: re.sub('\s+', ' ', s.strip()))
-    default_output_processor = TakeFirst()
+#class ProfLoader(ItemLoader):
+#    default_input_processor = MapCompose(lambda s: re.sub('\s+', ' ', s.strip()))
+#    default_output_processor = TakeFirst()
 
 
 class ProfSpider(CrawlSpider):
@@ -17,10 +17,13 @@ class ProfSpider(CrawlSpider):
     allowed_domains = ['apmath.spbu.ru']
     start_urls = ['http://www.apmath.spbu.ru/ru/staff/']
     rules = (
-        Rule(scrapy.linkextractor.LinkExtractor(restrict_xpaths='//tbody/tr'), follow=True),
+        Rule(scrapy.linkextractor.LinkExtractor(restrict_xpaths="//*[@id='content']/table/tr/td[1]/a"),
+             callback='parse_prep_info'),
         #Rule(scrapy.linkextractor.LinkExtractor(allow='index.html'), callback='parse_prep_info')
     )
 
-    def parse_prep_info(self, response):(
-
-    )
+    def parse_prep_info(self, response):
+        #self.logger.info('Hi, this is an item page! %s', response.url)
+        name = response.xpath("//*[@id='content']/h1").extract()
+        self.logger.info(name)
+        # self.logger.debug("12345")
