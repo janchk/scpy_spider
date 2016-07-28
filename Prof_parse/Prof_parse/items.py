@@ -8,10 +8,10 @@
 import scrapy
 
 
-class ProfParseItem(scrapy.Item):
+class Prof(scrapy.Item):
     name = scrapy.Field()
     photo = scrapy.Field()
-    interests = scrapy.Field()
+    desc = scrapy.Field()
     # define the fields for your item here like:
     # name = scrapy.Field()
     pass

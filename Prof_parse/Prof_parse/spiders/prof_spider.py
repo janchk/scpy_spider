@@ -24,6 +24,10 @@ class ProfSpider(CrawlSpider):
 
     def parse_prep_info(self, response):
         #self.logger.info('Hi, this is an item page! %s', response.url)
-        name = response.xpath("//*[@id='content']/h1").extract()
-        self.logger.info(name)
+        item = items.Prof()
+        item['name'] = response.xpath("//*[@id='content']/h1").extract()
+        #item['desc'] = response.xpath("").extract()
+        return item
+        #name = response.xpath("//*[@id='content']/h1").extract()
+        #self.logger.info(name)
         # self.logger.debug("12345")
