@@ -11,6 +11,15 @@
 
 BOT_NAME = 'Prof_parse'
 
+ITEM_PIPELINES = {'Prof_parse.pipelines.PymongoPipln': 300}  # адрес расположения
+MONGODB_SERVER = "localhost"
+MONGODB_PORT = 27017
+MONGODB_DB = "apmtah_spbu"
+MONGODB_COLLECTION = "info"
+# MONGO_URI = "mongodb://localhost/apmtah_db"
+# MONGO_DATABASE = 'apmath_db'
+
+
 SPIDER_MODULES = ['Prof_parse.spiders']
 NEWSPIDER_MODULE = 'Prof_parse.spiders'
 DOWNLOAD_HANDLERS = {'s3': None, }
