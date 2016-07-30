@@ -15,10 +15,3 @@ class Prof(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     pass
-
-#  class ProfItem(scrapy.Item):
-#      name = scrapy.Field()
-#      photo = scrapy.Field()
-#      interests = scrapy.Field()
-#      #add more later
-#
