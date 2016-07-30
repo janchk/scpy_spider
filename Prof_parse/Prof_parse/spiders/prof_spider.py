@@ -19,6 +19,7 @@ class ProfSpider(CrawlSpider):
     rules = (
         Rule(scrapy.linkextractor.LinkExtractor(restrict_xpaths="//*[@id='content']/table/tr/td[1]/a"),
              callback='parse_prep_info'),
+        # Новый комментарий  
         # Rule(scrapy.linkextractor.LinkExtractor(allow='index.html'), callback='parse_prep_info')
     )
 
