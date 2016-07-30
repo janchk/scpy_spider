@@ -19,7 +19,7 @@ class PymongoPipln(object):
         self.mongo_uri = mongo_uri
         self.mongo_db = mongo_db
 
-    @classmethod  # узнать про это!!!!!
+    @classmethod  # узнать про это
     def from_crawler(cls, crawler):
         return cls(
             mongo_uri=crawler.settings.get('MONGO_URI'),
