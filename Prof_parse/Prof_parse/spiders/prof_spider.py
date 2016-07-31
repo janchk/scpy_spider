@@ -1,9 +1,12 @@
+# -*- coding: utf-8 -*-
 import Prof_parse.items as items
 from scrapy.contrib.loader.processor import TakeFirst, MapCompose
 from scrapy.loader import ItemLoader
 from scrapy import selector
 from scrapy.spiders import *
 import scrapy.linkextractor
+import lxml
+from lxml import html
 from scrapy.linkextractor import *
 
 
@@ -19,7 +22,6 @@ class ProfSpider(CrawlSpider):
     rules = (
         Rule(scrapy.linkextractor.LinkExtractor(restrict_xpaths="//*[@id='content']/table/tr/td[1]/a"),
              callback='parse_prep_info'),
-        # Новый комментарий  
         # Rule(scrapy.linkextractor.LinkExtractor(allow='index.html'), callback='parse_prep_info')
     )
 
@@ -27,6 +29,9 @@ class ProfSpider(CrawlSpider):
         # self.logger.info('Hi, this is an item page! %s', response.url)
         item = items.Prof()
         item['name'] = response.xpath("//*[@id='content']/h1/text()").extract()
+        item['interests'] = \
+            response.xpath(u"//*/div/h2/a[contains(text(),   'интерес')]/following::div[1]/div/p/text()").extract()
+        # особое внимание на строку сверху. Символ u перед путем означает выбор кодировки Unicode для кирилицы.
         # item['desc'] = response.xpath("").extract()
         return item
         # name = response.xpath("//*[@id='content']/h1").extract()
