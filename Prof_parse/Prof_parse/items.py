@@ -11,6 +11,9 @@ import scrapy
 class Prof(scrapy.Item):
     name = scrapy.Field()
     interests = scrapy.Field()
+    teaching = scrapy.Field()
+    diploma_themes = scrapy.Field()
+    pinfo = scrapy.Field()
     photo = scrapy.Field()
     desc = scrapy.Field()
     # define the fields for your item here like:
